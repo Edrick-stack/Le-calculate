@@ -1,0 +1,4 @@
+Karena kalkulator ini berbasiskan web, maka Aplikasi sederhana ini pun bisa 
+dinikmati hanya dengan melalui link berikut ini :
+
+https://le-calculator.anvil.app/

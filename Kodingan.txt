@@ -1,0 +1,53 @@
+#Susunan Tombol rows
+    chars = ["1","2","3","4","<","C",
+             "5","6","7","8","+","-",
+             "9","0",".","*","/","="]
+    
+    self.btn = {}
+    gp = GridPanel()
+    
+    #Tombol
+    for index,i in enumerate(chars):
+      if i == "=":
+        clr = "#0EAFC1"
+      elif i in["C","<"]:
+        clr = "#FF0000"
+      elif i in["+","-","*","/"]:
+        clr = "#FF8000"
+      else:
+        clr = "#859E74"
+        
+      if index < 6:
+        row = 'A'
+      elif 6<=index<12:
+        row = 'B'
+      else:
+        row = 'C'
+      self.btn[i] = Button(text=i,
+                          font="Consolas",
+                          bold=True,
+                          foreground="#FFF",
+                          background=clr)
+      self.btn[i].tag.name = i
+      self.btn[i].set_event_handler('click', self.click)
+      gp.add_component(self.btn[i], row=row, col_xs=3, width_xs=1)
+      
+    #Menampilkan Grid Button
+    self.add_component(gp)
+    #Menata Barisan Button
+    self.space = Spacer(height=500)
+    self.add_component(self.space)
+    
+    #Logic Matematika
+  def click(self, **event_args):
+    val = event_args['sender'].tag.name
+    if val == "=":
+      self.text_box_1.text = eval(self.text_box_1.text)
+    elif val=="C":
+      self.text_box_1.text = ""
+    elif val=="<":
+      self.text_box_1.text = self.text_box_1.text[:-1]
+    else:
+      self.text_box_1.text +=val
+
+ 
